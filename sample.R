@@ -8,7 +8,6 @@ wd <- getwd()
 
 # load all the necessary packages
 library(DBI)
-library(RJDBC)
 library(keyring)
 library(readxl)
 library(reshape)
@@ -16,7 +15,9 @@ library(tidyverse)
 library(data.table)
 library(lubridate)
 library(patchwork)
-
+library(future)
+library(furrr)
+library(fpp3)
 
 
 
@@ -79,4 +80,8 @@ add_units <- function(n) {
 #------------------------------------------------------------------------------#
 ########## step 1 read raw files ###########
 #------------------------------------------------------------------------------#
+# parallel processing testing
+sessionInfo()
+plan(multiprocess)
+c1 <- parallel::makeCluster(2)
 
